@@ -1,0 +1,68 @@
+
+{
+  alunos [
+    {
+      id 1,
+      nome Carlos Maia,
+      email carlosm@ig.com.br,
+      idade 34
+    },
+    {
+      id 2,
+      nome Maria Antunes,
+      email mantunes@hotmail.com.br,
+      idade 25
+    },
+    {
+      id 3,
+      nome João Macedo,
+      email jll@ig.com,
+      idade 28
+    },
+    {
+      nome nivaldo,
+      email batista_nba@hotmail.com,
+      idade 36,
+      id 4
+    }
+  ],
+  Curso [
+    {
+      id 1,
+      disciplina Java,
+      periodo 3
+    },
+    {
+      id 2,
+      disciplina C#,
+      periodo 4
+    },
+    {
+      id 3,
+      disciplina full stack,
+      periodo 2
+    }
+  ]
+}
+
+
+--------------------------------------comando--------------------------------------------------------------------------
+npm create vite@latest
+npm install
+npm install axios
+
+npm instal json-server
+npm json-server --watch db.json --port 3002
+npm run dev
+
+import 'bootstrapdistcssbootstrap.min.css';
+
+install bootstrap
+
+
+
+
+
+
+
+
