@@ -16,7 +16,7 @@ export default function BaseTable() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/filmes")
+.get("http://localhost:3002/filmes")
       .then((Response) => setRows(Response.data))
       .then((error) => console.log(error));
   }, []);
@@ -39,24 +39,21 @@ export default function BaseTable() {
     }
     
     //-------------Atualizar----------------------------------------------------
+    const handleUpdate = async post => {
+      post.nome = "Atualizando ...";
+      await axios.put(apiEndPoint + "/filmes" + post.id);
+      const postsClone = [...posts];
+      const index = postsClone.indexOf(post);
+      setPosts(postsClone);
+      post.then((Response) => setRows(Response.data))
+    }
+  
+    //-------------deletar----------------------------------------------------
+const handDelete =  async post=> {
+  await axios.delete(apiEndPoint +  '/filmes' + post.id + post);
+  setPosts(posts.filter((p) => p.id === post.id));
+}
 
-    const inputName = (e) => {
-      setNome(e.target.value)
-  }
-  const inputYear = (e) => {
-    setAno(e.target.value);
-  };
-  const inputAge = (e) => {
-    setIdade(e.target.value);
-  };
-  function postNome()
-  {
-      axios.post('http://localhost:3002/filmes', { nome: nome, ano: ano, idade: idade })
-      .then(axios.get("http://localhost:3002/filmes"))
-      .then((Response) => setRows(Response.data))
-      .then((error) => console.log(error));
-  }
-    
   return (
     <Table striped bordered hover>
       <thead>
@@ -70,21 +67,12 @@ export default function BaseTable() {
             <input onChange={(e) => inputIdade(e)} /> 
             <Button variant="primary" onClick={() => postNome()}>Adicionar</Button>{" "}
             
-          </header><header>
-            <label>ID</label>
-            <input onChange={(e) => inputNome(e)} />
-            <label>Título</label>
-            <input onChange={(e) => inputNome(e)} /> 
-            <label>Ano</label>
-            <input onChange={(e) => inputAno(e)} /> 
-            <label>Idade</label>
-            <input onChange={(e) => inputIdade(e)} /> 
-            <Button variant="primary" onClick={() => postNome()}>Update</Button>{" "}
+      
           </header>
         </tr>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
+          <th>Título</th>
           <th>Ano</th>
           <th>Idade</th>
           <th>Escolha</th>
@@ -98,8 +86,8 @@ export default function BaseTable() {
             <td>{row.ano}</td>
             <td>{row.idade}</td>
             <td>
-              <Button variant="primary" onClick={() => handleUpdate(post)}>Editar</Button>{" "}
-              <Button variant="danger">Excluir</Button>{" "}
+              <Button variant="primary" onClick={() => handleUpdate(post)}>Update</Button>{" "}
+              <Button variant="danger" onClick={()=> handDelete}>Excluir</Button>{" "}
             </td>
           </tr>
         ))}
