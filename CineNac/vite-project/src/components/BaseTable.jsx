@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useEffect, useState, post} from "react";
 
+
 export default function BaseTable() {
     const [rows, setRows] = useState([]);
     const [nome, setNome] = useState([]);
@@ -65,16 +66,16 @@ export default function BaseTable() {
     }
 
   return (
-    <Table striped bordered hover>
+    <Table align="center" striped responsive bordered hover size="sm" variant="dark">
       <thead>
         <tr>
           <header>
             <label>id</label>
-            <input onChange={(e) => inputId(e)} /> 
+           <input onChange={(e) => inputId(e)} /> <br />
             <label>Título</label>
-            <input onChange={(e) => inputNome(e)} /> 
+            <input onChange={(e) => inputNome(e)} /> <br />
             <label>Ano</label>
-            <input onChange={(e) => inputAno(e)} /> 
+            <input onChange={(e) => inputAno(e)} /> <br />
             <label>Idade</label>
             <input onChange={(e) => inputIdade(e)} /> 
             
@@ -94,13 +95,13 @@ export default function BaseTable() {
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr {...id}>
+          <tr responsive {...id}>
             <td>{row.id}</td>
             <td>{row.nome}</td>
             <td>{row.ano}</td>
             <td>{row.idade}</td>
             <td>
-              <Button variant="primary" onClick={() => handUpdate(post)}>Update</Button>{" "}
+              <Button responsive variant="secondary" onClick={() => handUpdate(post)}>Update</Button>{" "}
               <Button variant="danger" onClick={()=> deletePost(id) }>Excluir</Button>{" "}
             </td>
           </tr>
