@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/css/bootstrap.css'
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, post} from "react";
 
 export default function BaseTable() {
     const [rows, setRows] = useState([]);
@@ -30,41 +30,57 @@ export default function BaseTable() {
     const inputIdade = (e) => {
       setIdade(e.target.value);
     };
+    const inputId = (e) => {
+      setId(e.target.value);
+    };
     function postNome()
     {
-        axios.post('http://localhost:3002/filmes', { nome: nome, ano: ano, idade: idade })
+        axios.post('http://localhost:3002/filmes', { id: id, nome: nome, ano: ano, idade: idade })
         .then(axios.get("http://localhost:3002/filmes"))
         .then((Response) => setRows(Response.data))
         .then((error) => console.log(error));
+        
     }
     
     //-------------Atualizar----------------------------------------------------
-    const handleUpdate = async post => {
-      post.nome = "Atualizando ...";
-      await axios.put(apiEndPoint + "/filmes" + post.id);
-      const postsClone = [...posts];
-      const index = postsClone.indexOf(post);
-      setPosts(postsClone);
-      post.then((Response) => setRows(Response.data))
-    }
+    const handUpdate = async post => {
+      row.nome = nome
+      row.ano = ano
+      row.idade = idade
+      row.id = id
+      await axios.put(apiEndPoint + id)
+      const postClone = [...posts] 
+      const index = postClone.indexOf(post)
+      postClone[index] =  { ...post }
+      setPosts(postClone)
+      }
   
     //-------------deletar----------------------------------------------------
-const handDelete =  async post=> {
-  await axios.delete(apiEndPoint +  '/filmes' + post.id + post);
-  setPosts(posts.filter((p) => p.id === post.id));
-}
+  
+    function deletePost(id, ) {
+      axios.delete(`http://localhost:3002/filmes/${7}`)
+          .then(() => {
+          alert("Post deleted!");
+          setPost(id)
+          setPosts(posts.filter(post => post._id !== id))
+        });
+    }
 
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           <header>
+            <label>id</label>
+            <input onChange={(e) => inputId(e)} /> 
             <label>Título</label>
             <input onChange={(e) => inputNome(e)} /> 
             <label>Ano</label>
             <input onChange={(e) => inputAno(e)} /> 
             <label>Idade</label>
             <input onChange={(e) => inputIdade(e)} /> 
+            
+            
             <Button variant="primary" onClick={() => postNome()}>Adicionar</Button>{" "}
             
       
@@ -80,14 +96,14 @@ const handDelete =  async post=> {
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr Key={rows.id}>
+          <tr {...id}>
             <td>{row.id}</td>
             <td>{row.nome}</td>
             <td>{row.ano}</td>
             <td>{row.idade}</td>
             <td>
-              <Button variant="primary" onClick={() => handleUpdate(post)}>Update</Button>{" "}
-              <Button variant="danger" onClick={()=> handDelete}>Excluir</Button>{" "}
+              <Button variant="primary" onClick={() => handUpdate()}>Update</Button>{" "}
+              <Button variant="danger" onClick={()=> deletePost(id) }>Excluir</Button>{" "}
             </td>
           </tr>
         ))}

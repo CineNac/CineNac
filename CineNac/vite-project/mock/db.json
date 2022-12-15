@@ -1,12 +1,12 @@
 {
   "filmes": [
     {
-      "nome": "As Viagens de Chihiro",
-      "ano": "2003",
+      "nome": "Ponyo: Uma Amizade Que Veio do Mar",
+      "ano": "2010",
       "idade": "Livre",
-      "descrição": "Chihiro e seus pais estão se mudando para uma cidade diferente. A caminho da nova casa, o pai decide pegar um atalho. Eles se deparam com uma mesa repleta de comida, embora ninguém esteja por perto. Chihiro sente o perigo, mas seus pais começam a comer. Quando anoitece, eles se transformam em porcos. Agora, apenas Chihiro pode salvá-los.",
+      "descrição": "O garoto Sousuke encontra um peixinho dourado preso em uma garrafa e decide libertá-lo, sem saber que se trata da deusa do mar Ponyo. Filha de um poderoso mago, ela se comove com a atitude do menino e usa a magia do pai para se transformar em humana. Dessa forma, acredita poder fortalecer a amizade com Sousuke. Porém, a substância de sua poção mágica pode colocar em risco o vilarejo onde mora o menino.",
       "id": 1,
-      "img": "./imagens/chihiro.png"
+      "img": "./imagens/ponyo.jpg"
     },
     {
       "nome": "Ponyo: Uma Amizade Que Veio do Mar",
@@ -49,52 +49,10 @@
       "img": "./imagens/inuyasha2.jpg"
     },
     {
-      "nome": "Jumanji",
-      "ano": "32",
-      "idade": "43",
-      "id": 7
-    },
-    {
+      "id": "7",
       "nome": "avatar",
-      "ano": "2014",
-      "idade": "Livre",
-      "id": 8
-    },
-    {
-      "nome": "transformers",
       "ano": "2012",
-      "idade": "12 anos",
-      "id": 9
-    },
-    {
-      "nome": "jojo",
-      "ano": "2012",
-      "idade": "32",
-      "id": 10
-    },
-    {
-      "nome": "ajaj",
-      "ano": "asda",
-      "idade": "2123",
-      "id": 11
-    },
-    {
-      "nome": "jaja",
-      "ano": "3245",
-      "idade": "34",
-      "id": 12
-    },
-    {
-      "nome": "aa",
-      "ano": [],
-      "idade": [],
-      "id": 13
-    },
-    {
-      "nome": "fsdf",
-      "ano": "asdasd",
-      "idade": "asdasd",
-      "id": 14
+      "idade": "12"
     }
   ],
   "doces": [
