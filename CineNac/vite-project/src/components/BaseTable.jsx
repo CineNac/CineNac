@@ -66,7 +66,7 @@ export default function BaseTable() {
     }
 
   return (
-    <Table align="center" striped responsive bordered hover size="sm" variant="dark">
+    <Table  ali striped responsive bordered hover size="sm" variant="dark">
       <thead>
         <tr>
           <header>
