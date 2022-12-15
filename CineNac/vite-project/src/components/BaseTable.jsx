@@ -12,6 +12,7 @@ export default function BaseTable() {
     const [ano, setAno] = useState([]);
     const [idade, setIdade] = useState([]);
     const [id, setId] = useState([]);
+    const [posts, setPosts] = useState([]);
     const apiEndPoint = 'http://localhost:3002/filmes';
 
   useEffect(() => {
@@ -43,17 +44,14 @@ export default function BaseTable() {
     }
     
     //-------------Atualizar----------------------------------------------------
-    const handUpdate = async post => {
-      row.nome = nome
-      row.ano = ano
-      row.idade = idade
-      row.id = id
-      await axios.put(apiEndPoint + id)
-      const postClone = [...posts] 
-      const index = postClone.indexOf(post)
-      postClone[index] =  { ...post }
-      setPosts(postClone)
-      }
+    function handUpdate()
+    {
+        axios.put(`http://localhost:3002/filmes/${7}`, { id: id, nome: nome, ano: ano, idade: idade })
+        .then(axios.get("http://localhost:3002/filmes"))
+        .then((Response) => setRows(Response.data))
+        .then((error) => console.log(error));
+        
+    }
   
     //-------------deletar----------------------------------------------------
   
@@ -102,7 +100,7 @@ export default function BaseTable() {
             <td>{row.ano}</td>
             <td>{row.idade}</td>
             <td>
-              <Button variant="primary" onClick={() => handUpdate()}>Update</Button>{" "}
+              <Button variant="primary" onClick={() => handUpdate(post)}>Update</Button>{" "}
               <Button variant="danger" onClick={()=> deletePost(id) }>Excluir</Button>{" "}
             </td>
           </tr>
