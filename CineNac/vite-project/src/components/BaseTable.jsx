@@ -41,23 +41,23 @@ export default function BaseTable() {
         .then(axios.get("http://localhost:3002/filmes"))
         .then((Response) => setRows(Response.data))
         .then((error) => console.log(error));
-        
+
     }
-    
+
     //-------------Atualizar----------------------------------------------------
     function handUpdate()
     {
-        axios.put(`http://localhost:3002/filmes/${7}`, { id: id, nome: nome, ano: ano, idade: idade })
+         axios.put(`http://localhost:3002/filmes/${id}`, { id: id, nome: nome, ano: ano, idade: idade })
         .then(axios.get("http://localhost:3002/filmes"))
         .then((Response) => setRows(Response.data))
         .then((error) => console.log(error));
-        
+
     }
-  
+
     //-------------deletar----------------------------------------------------
-  
+
     function deletePost(id, ) {
-      axios.delete(`http://localhost:3002/filmes/${7}`)
+          axios.delete(`http://localhost:3002/filmes/${id}`)
           .then(() => {
           alert("Post deleted!");
           setPost(id)
@@ -66,26 +66,27 @@ export default function BaseTable() {
     }
 
   return (
-    <Table  ali striped responsive bordered hover size="sm" variant="dark">
+
+    <Table striped responsive bordered hover size="sm" variant="dark">
       <thead>
         <tr>
           <header>
-            <label>id</label>
+            <label>Id</label>
            <input onChange={(e) => inputId(e)} /> <br />
             <label>Título</label>
             <input onChange={(e) => inputNome(e)} /> <br />
             <label>Ano</label>
             <input onChange={(e) => inputAno(e)} /> <br />
             <label>Idade</label>
-            <input onChange={(e) => inputIdade(e)} /> 
-            
-            
+            <input onChange={(e) => inputIdade(e)} />
+
+
             <Button variant="primary" onClick={() => postNome()}>Adicionar</Button>{" "}
-            
-      
+
+
           </header>
         </tr>
-        <tr>
+        <tr d-inline-block>
           <th>ID</th>
           <th>Título</th>
           <th>Ano</th>

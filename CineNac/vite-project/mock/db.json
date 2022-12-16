@@ -41,18 +41,22 @@
       "img": "./imagens/inuyasha.jpg"
     },
     {
-      "nome": "Inuyasha: A Espada Que Domina o Mundo",
-      "ano": "2003",
-      "idade": "14 anos",
-      "descrição": "Dois irmãos deixam as diferenças de lado para deter o poder destrutivo de uma espada maligna.",
       "id": 6,
-      "img": "./imagens/inuyasha2.jpg"
+      "nome": "Inuyasha: A Espada Que Domina o Mundo 2",
+      "ano": "2004",
+      "idade": "15"
     },
     {
       "id": "7",
-      "nome": "avatar 2",
-      "ano": "2022",
-      "idade": "10"
+      "nome": "avatar 4",
+      "ano": "2046",
+      "idade": "15"
+    },
+    {
+      "id": "8",
+      "nome": "vasco 3",
+      "ano": "1988",
+      "idade": "123 anos"
     }
   ],
   "doces": [
