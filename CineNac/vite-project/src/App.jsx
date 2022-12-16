@@ -4,6 +4,7 @@ import "./App.css";
 import BaseTable from "./components/BaseTable";
 import BaseDoce from "./components/Doce";
 import BaseMenu from "./components/Menu";
+import BaseTableFunc from "./components/BaseTableFunc";
 
 
 function App() {
@@ -13,7 +14,11 @@ function App() {
     <div className="App">
       <br />
       <BaseMenu></BaseMenu>
+      <br />
+      <br />
       <BaseTable></BaseTable>
+      <BaseDoce></BaseDoce>
+     <BaseTableFunc></BaseTableFunc>
 
     </div>
   );

@@ -8,108 +8,130 @@ import { useEffect, useState, post} from "react";
 
 
 export default function BaseDoce() {
-    const [rows, setRows] = useState([]);
     const [produto, setProduto] = useState([]);
     const [marca, setMarca] = useState([]);
-    const [seção, setSeção] = useState([]);
-    const [descrição, setDescrição] = useState([]);
+    const [secao, setSecao] = useState([]);
+    const [descricao, setDescricao] = useState([]);
     const [posts, setPosts] = useState([]);
+    const [id, setId] = useState([]);
     const apiEndPoint = 'http://localhost:3002/doces';
 
-  useEffect(() => {
-    axios
-.get("http://localhost:3002/doces")
-      .then((Response) => setRows(Response.data))
-      .then((error) => console.log(error));
-  }, []);
-//--------------------------Inserindo Valores
-    const inputProduto = (e) => {
-        setProduto(e.target.value)
-    }
-    const inputMarca = (e) => {
-      setMarca(e.target.value);
-    };
-    const inputSeção = (e) => {
-      setSeção(e.target.value);
-    };
-    const inputDescrição = (e) => {
-      setDescrição(e.target.value);
-    };
-    function postProduto()
-    {
-        axios.post('http://localhost:3002/doces', { id: id, marca: marca, produto: produto, seção: seção, descrição: descrição,  })
-        .then(axios.get("http://localhost:3002/doces"))
-        .then((Response) => setRows(Response.data))
-        .then((error) => console.log(error));
+    useEffect(() => {
+      const getPosts = async () => {
+        const { data: res } = await axios.get(apiEndPoint);
+        setPosts(res);
+      };
+      getPosts();
+    }, []);
+      ///Inserindo o post - const
+      const handPost = async () => {
+        const post = {
+          id: id,
+          produto: produto,
+          marca: marca,
+          secao: secao,
+          descricao: descricao,
+        };
 
-    }
+        await axios.post(apiEndPoint, post);
+        setPosts([post, ...posts]);
+      };
 
-    //-------------Atualizar----------------------------------------------------
-    function handUpdate()
-    {
-         axios.put(`http://localhost:3002/doces/${id}`, { id: id, marca: marca, produto: produto, seção: seção, descrição: descrição })
-        .then(axios.get("http://localhost:3002/doces"))
-        .then((Response) => setRows(Response.data))
-        .then((error) => console.log(error));
+    //Atualizando - put
+  const handUpdate = async (post) => {
+    console.log(post.id);
+    post.produto = produto;
+    post.marca = marca;
+    post.secao = secao;
+    post.descricao = descricao;
+    await axios.put(apiEndPoint + "/" + post.id);
+    const postClone = [...posts];
+    const index = postClone.indexOf(post);
+    postClone[index] = { ...post };
+    setPosts(postClone);
+  };
 
-    }
+    //deletar - delete
+  const handDelete = async (post) => {
+    console.log(post);
+    await axios.delete(apiEndPoint + "/" + post.id);
+    setPosts(posts.filter((p) => p.id !== post.id));
+  };
 
-    //-------------deletar----------------------------------------------------
+  const handlerProduto = (e) => {
+    setProduto(e.target.value);
+  };
+  const handlerMarca = (e) => {
+    setMarca(e.target.value);
+  };
+  const handlerSecao = (e) => {
+    setSecao(e.target.value);
+  };
+  const handlerDescricao = (e) => {
+    setDescricao(e.target.value);
+  };
+  const handlerID = (e) => {
+    setId(e.target.value);
+  };
 
-    function deletePost(id, ) {
-          axios.delete(`http://localhost:3002/doces/${id}`)
-          .then(() => {
-          alert("Post deleted!");
-          setPost(id)
-          setPosts(posts.filter(post => post._id !== id))
-        });
-    }
 
   return (
-    <Table  ali striped responsive bordered hover size="sm" variant="dark">
+    <div className="container">
+    <label><h5>ID</h5></label>
+    <input onChange={(e) => handlerID(e)} />
+    <label><h5>Produto</h5></label>
+    <input onChange={(e) => handlerProduto(e)} />
+    <label><h5>Marca</h5></label>
+    <input onChange={(e) => handlerMarca(e)} />
+    <label><h5>Seção</h5></label>
+    <input onChange={(e) => handlerSecao(e)} />
+    <br />
+    <label><h5>Descrição</h5></label>
+    <input onChange={(e) => handlerDescricao(e)} />
+    <Button style={{"margin-left": "5px","margin-bottom": "5px"}} variant="dark" onClick={handPost} >
+      Adicionar
+    </Button>
+    <Table striped bordered hover size="sm" variant="dark">
       <thead>
-        <tr>
-          <header>
-            <label>id</label>
-           <input onChange={(e) => inputId(e)} /> <br />
-            <label>Produto</label>
-            <input onChange={(e) => inputProduto(e)} /> <br />
-            <label>Marca</label>
-            <input onChange={(e) => inputMarca(e)} /> <br />
-            <label>Seção</label>
-            <input onChange={(e) => inputSeção(e)} />
-            <label>Descrição</label>
-            <input onChange={(e) => inputDescrição(e)} />
-
-
-            <Button variant="primary" onClick={() => postProduto()}>Adicionar</Button>{" "}
-
-
-          </header>
-        </tr>
         <tr>
           <th>ID</th>
           <th>Produto</th>
           <th>Marca</th>
           <th>Seção</th>
           <th>Descrição</th>
+          <th>Atualização</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <tr responsive {...id}>
-            <td>{row.id}</td>
-            <td>{row.produto}</td>
-            <td>{row.marca}</td>
-            <td>{row.seção}</td>
-            <td>{row.descrição}</td>
+        {posts.map((post) => (
+          <tr key={post.id}>
+            <td> {post.id} </td>
+            <td> {post.produto} </td>
+            <td> {post.marca} </td>
+            <td> {post.secao} </td>
+            <td> {post.descricao} </td>
             <td>
-              <Button responsive variant="secondary" onClick={() => handUpdate(post)}>Update</Button>{" "}
-              <Button variant="danger" onClick={()=> deletePost(id) }>Excluir</Button>{" "}
+              <Button responsive variant="secondary"
+                onClick={() => handUpdate(post)}
+          
+              >
+                Update
+              </Button>
+            </td>
+            <td>
+              <Button variant="danger"
+                onClick={() => handDelete(post)}
+                
+              >
+                Excluir
+              </Button>
             </td>
           </tr>
         ))}
       </tbody>
     </Table>
-  );
+  </div>
+);
 }
+

@@ -12,11 +12,11 @@ function BaseMenu() {
   return (
     <>
 
-      <Navbar fixed="top" bg="light" variant="light">
+      <Navbar fixed="top" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/"><img
-            src="../imagens/logo.png"
-            width="70"
+            src="../src/imagens/favicon-32x32.png"
+            width="45"
             height="28"
             className="d-inline-block align-top"
             alt="CineNac"

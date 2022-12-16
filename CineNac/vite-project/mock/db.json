@@ -57,59 +57,71 @@
       "nome": "vasco 3",
       "ano": "1988",
       "idade": "123 anos"
+    },
+    {
+      "id": "9",
+      "nome": "Avatar: Teu Pai Quer Me Dá",
+      "ano": "2067",
+      "idade": "+300 anos"
+    },
+    {
+      "id": "10",
+      "nome": "XXXXXX",
+      "ano": "XXXXX",
+      "idade": "XXXXXX"
     }
   ],
   "doces": [
     {
       "produto": "Barra de Chocolate Branco",
       "marca": "Nestlé",
-      "seção": "Chocolates",
-      "descrição": "Barra de chocolate branco da Nestlé",
+      "secao": "Chocolates",
+      "descricao": "Barra de chocolate branco da Nestlé",
       "id": 1,
       "img": "./imagens/nestlé_branco.jpg"
     },
     {
       "produto": "Barra de Chocolate Preto",
       "marca": "Nestlé",
-      "seção": "Chocolates",
-      "descrição": "Barra de chocolate preto da Nestlé",
+      "secao": "Chocolates",
+      "descricao": "Barra de chocolate preto da Nestlé",
       "id": 2,
       "img": "./imagens/nestlé_preto.jpg"
     },
     {
       "produto": "Barra de Chocolate Meio a Meio",
       "marca": "Garoto",
-      "seção": "Chocolates",
-      "descrição": "Barra de chocolate meio a meio da Garoto",
+      "secao": "Chocolates",
+      "descricao": "Barra de chocolate meio a meio da Garoto",
       "id": 3,
       "img": "./imagens/nestlé_duo.jpg"
     },
     {
       "produto": "Bala Fini",
       "marca": "Fini",
-      "seção": "Doces",
-      "descrição": "Bala Fini sabor frutas vermelhas",
+      "secao": "Doces",
+      "descricao": "Bala Fini sabor frutas vermelhas",
       "id": 4,
       "img": "./imagens/fini_vermelhas.jpg"
     },
     {
       "produto": "Bala Fini",
       "marca": "Fini",
-      "seção": "Doces",
-      "descrição": "Bala Fini sabor tutti-frutti",
+      "secao": "Doces",
+      "descricao": "Bala Fini sabor tutti-frutti",
       "id": 5,
       "img": "./imagens/fini_tutti.png"
     },
     {
       "produto": "Bala Fini",
       "marca": "Fini",
-      "seção": "Doces",
-      "descrição": "Bala Fini sabor morango",
+      "secao": "Doces",
+      "descricao": "Bala Fini sabor morango",
       "id": 6,
       "img": "./imagens/fini_morango.png"
     }
   ],
-  "funcionários": [
+  "funcionarios": [
     {
       "nome": "Aislany",
       "usuario": "aislany_cine",

@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function BaseTable() {
+export default function BaseTableFunc() {
   const [nome, setNome] = useState("");
   const [posts, setPosts] = useState([]);
   const [usuario, setUsuario] = useState("");
@@ -73,20 +73,21 @@ export default function BaseTable() {
 
   return (
     <div className="container">
-      <label>ID</label>
+      <label><h5>ID</h5></label>
       <input onChange={(e) => handlerID(e)} />
-      <label>Nome</label>
+      <label><h5>Nome</h5></label>
       <input onChange={(e) => handlerNome(e)} />
-      <label>Usuário</label>
+      <label><h5>Usuário</h5></label>
       <input onChange={(e) => handlerUsuario(e)} />
-      <label>Cargo</label>
+      <label><h5>Cargo</h5></label>
       <input onChange={(e) => handlerCargo(e)} />
-      <label>Turno</label>
+      <br />
+      <label><h5>Turno</h5></label>
       <input onChange={(e) => handlerTurno(e)} />
-      <button onClick={handPost} className=" btn btn-info btn-sm ">
-        Inserir
-      </button>
-      <Table striped bordered hover size="sm" variant="dark">
+      <Button style={{"margin-left": "5px","margin-bottom": "5px"}}  variant="dark" onClick={handPost} >
+        Adicionar
+      </Button>
+      <Table striped responsive bordered hover size="sm" variant="dark">
         <thead>
           <tr>
             <th>ID</th>
@@ -95,7 +96,7 @@ export default function BaseTable() {
             <th>Cargo</th>
             <th>Turno</th>
             <th>Atualização</th>
-            <th>Delete</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -107,20 +108,20 @@ export default function BaseTable() {
               <td> {post.cargo} </td>
               <td> {post.turno} </td>
               <td>
-                <button
+                <Button responsive variant="secondary"
                   onClick={() => handUpdate(post)}
-                  className=" btn btn-info btn-sm "
+            
                 >
                   Update
-                </button>
+                </Button>
               </td>
               <td>
-                <button
+                <Button variant="danger"
                   onClick={() => handDelete(post)}
-                  className=" btn btn-danger btn-sm "
+                  
                 >
-                  Delete
-                </button>
+                  Excluir
+                </Button>
               </td>
             </tr>
           ))}

@@ -1,1 +1,0 @@
-npm install react react-dom next eslint-config-next react-bootstrap bootstrap
