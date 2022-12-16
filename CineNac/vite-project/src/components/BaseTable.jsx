@@ -71,7 +71,7 @@ export default function BaseTable() {
       <thead>
         <tr>
           <header>
-            <label>Id</label> "   "
+            <label>Id</label>
             <input onChange={(e) => inputId(e)} />
             <br />
             <label>Título</label>
