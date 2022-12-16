@@ -66,30 +66,28 @@ export default function BaseTable() {
     }
 
   return (
+    <div className="container">
 
-    <Table striped responsive bordered hover size="sm" variant="dark">
-      <thead>
-        <tr>
-          <header>
-            <label>Id</label>
+     <label>Id</label>
             <input onChange={(e) => inputId(e)} />
-            <br />
+
             <label>Título</label>
             <input onChange={(e) => inputNome(e)} />
-            <br />
+
             <label>Ano</label>
             <input onChange={(e) => inputAno(e)} />
-            <br />
+
             <label>Idade</label>
             <input onChange={(e) => inputIdade(e)} />
-            <br />
+
 
 
             <Button variant="primary" onClick={() => postNome()}>Adicionar</Button>{" "}
 
 
-          </header>
-        </tr>
+    <Table striped responsive bordered hover size="sm" variant="dark">
+      <thead>
+
         <tr d-inline-block>
           <th>ID</th>
           <th>Título</th>
@@ -112,6 +110,7 @@ export default function BaseTable() {
           </tr>
         ))}
       </tbody>
-    </Table>
+      </Table>
+</div>
   );
 }
