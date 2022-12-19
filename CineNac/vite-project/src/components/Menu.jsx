@@ -22,9 +22,7 @@ function BaseMenu() {
             alt="CineNac"
           /></Navbar.Brand>
           <Nav className="me-auto">
-           <Nav.Link href="/filmes">Filmes</Nav.Link>{"    "}
-           <Nav.Link >Doces</Nav.Link>{"    "}
-           <Nav.Link href="/funcionarios">Funcionários</Nav.Link>{"    "}
+           <Nav.Link href="#" disabled>Admnistração Interna do site CineNac</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

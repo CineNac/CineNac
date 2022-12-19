@@ -1,10 +1,10 @@
 {
   "filmes": [
     {
-      "nome": "Ponyo: Uma Amizade Que Veio do Mar",
-      "ano": "2010",
+      "nome": "A Viagem de Chihiro",
+      "ano": "2001",
       "idade": "Livre",
-      "descrição": "O garoto Sousuke encontra um peixinho dourado preso em uma garrafa e decide libertá-lo, sem saber que se trata da deusa do mar Ponyo. Filha de um poderoso mago, ela se comove com a atitude do menino e usa a magia do pai para se transformar em humana. Dessa forma, acredita poder fortalecer a amizade com Sousuke. Porém, a substância de sua poção mágica pode colocar em risco o vilarejo onde mora o menino.",
+      "descrição": "Chihiro e seus pais estão se mudando para uma cidade diferente. A caminho da nova casa, o pai decide pegar um atalho. Eles se deparam com uma mesa repleta de comida, embora ninguém esteja por perto. Chihiro sente o perigo, mas seus pais começam a comer. Quando anoitece, eles se transformam em porcos. Agora, apenas Chihiro pode salvá-los.",
       "id": 1,
       "img": "./imagens/ponyo.jpg"
     },
@@ -44,31 +44,7 @@
       "id": 6,
       "nome": "Inuyasha: A Espada Que Domina o Mundo 2",
       "ano": "2004",
-      "idade": "15"
-    },
-    {
-      "id": "7",
-      "nome": "avatar 4",
-      "ano": "2046",
-      "idade": "15"
-    },
-    {
-      "id": "8",
-      "nome": "vasco 3",
-      "ano": "1988",
-      "idade": "123 anos"
-    },
-    {
-      "id": "9",
-      "nome": "Avatar: Teu Pai Quer Me Dá",
-      "ano": "2067",
-      "idade": "+300 anos"
-    },
-    {
-      "id": "10",
-      "nome": "XXXXXX",
-      "ano": "XXXXX",
-      "idade": "XXXXXX"
+      "idade": "14 anos"
     }
   ],
   "doces": [

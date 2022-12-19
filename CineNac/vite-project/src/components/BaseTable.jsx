@@ -8,7 +8,6 @@ import { useEffect, useState, post} from "react";
 
 
 export default function BaseTable() {
-    const [rows, setRows] = useState([]);
     const [nome, setNome] = useState([]);
     const [ano, setAno] = useState([]);
     const [idade, setIdade] = useState([]);
@@ -16,73 +15,78 @@ export default function BaseTable() {
     const [posts, setPosts] = useState([]);
     const apiEndPoint = 'http://localhost:3002/filmes';
 
-  useEffect(() => {
-    axios.get(apiEndPoint)
-      .then((Response) => setRows(Response.data))
-      .then((error) => console.log(error));
-  }, []);
-//--------------------------Inserindo Valores
-    const inputNome = (e) => {
-        setNome(e.target.value)
-    }
-    const inputAno = (e) => {
-      setAno(e.target.value);
-    };
-    const inputIdade = (e) => {
-      setIdade(e.target.value);
-    };
-    const inputId = (e) => {
-      setId(e.target.value);
-    };
-    const post = {id:id}
-    function postNome()
-    {
-        axios.post(apiEndPoint, { id: id, nome: nome, ano: ano, idade: idade })
-        .then(axios.get(apiEndPoint))
-        .then((Response) => setRows(Response.data))
-        .then((error) => console.log(error));
+    useEffect(() => {
+      const getPosts = async () => {
+        const { data: res } = await axios.get(apiEndPoint);
+        setPosts(res);
+      };
+      getPosts();
+    }, []);  
+    //--------------------------Inserindo Valores
+    const handPost = async () => {
+      const post = {
+        id: id,
+        nome: nome,
+        ano: ano,
+        idade: idade,
+      };
 
-    }
-
+      await axios.post(apiEndPoint, post);
+      setPosts([post, ...posts]);
+    };
     //-------------Atualizar----------------------------------------------------
-    function handUpdate()
-    {
-         axios.put(`http://localhost:3002/filmes/${id}`, { id: id, nome: nome, ano: ano, idade: idade })
-        .then(axios.get("http://localhost:3002/filmes"))
-        .then((Response) => setRows(Response.data))
-        .then((error) => console.log(error));
-
-    }
-
+    const handUpdate = async (post) => {
+      console.log(post.id);
+      post.nome = nome;
+      post.ano = ano;
+      post.idade = idade;
+      await axios.put(apiEndPoint + "/" + post.id);
+      const postClone = [...posts];
+      const index = postClone.indexOf(post);
+      postClone[index] = { ...post };
+      setPosts(postClone);
+    };
     //-------------deletar----------------------------------------------------
 
-    function deletePost(id) {
-          axios.delete(`http://localhost:3002/filmes/${id}`)
-          .then(() => {
-          alert("Post deleted!");
-          setPosts(id)
-          setPosts(posts.filter(post => post._id !== id))
-        });
-    }
-
+    const handDelete = async (post) => {
+      console.log(post);
+      await axios.delete(apiEndPoint + "/" + post.id);
+      setPosts(posts.filter((p) => p.id !== post.id));
+    };
+  
+    const handlerNome = (e) => {
+      setNome(e.target.value);
+    };
+    const handlerAno = (e) => {
+      setAno(e.target.value);
+    };
+    const handlerIdade = (e) => {
+      setIdade(e.target.value);
+    };
+    const handlerID = (e) => {
+      setId(e.target.value);
+    };
+  
   return (
     <div className="container">
 
             <label><h5>ID</h5></label>
-            <input onChange={(e) => inputId(e)} />
+            <input onChange={(e) => handlerID(e)} />
 
             <label><h5>Título</h5></label>
-            <input onChange={(e) => inputNome(e)} />
+            <input onChange={(e) => handlerNome(e)} />
 
             <label><h5>Lançamento</h5></label>
-            <input onChange={(e) => inputAno(e)} />
+            <input onChange={(e) => handlerAno(e)} />
 
             <label><h5>Faixa Etária</h5></label>
-            <input onChange={(e) => inputIdade(e)} />
+            <input onChange={(e) => handlerIdade(e)} />
 
 
               
-            <Button style={{"margin-left": "5px","margin-bottom": "5px"}} variant="dark" onClick={() => postNome()}>Adicionar</Button>{" "}
+            <Button style={{"margin-left": "5px","margin-bottom": "5px"}}  variant="dark" onClick={handPost} >
+        Adicionar
+      </Button>
 
 
     <Table striped responsive bordered hover size="sm" variant="dark">
@@ -98,17 +102,18 @@ export default function BaseTable() {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <tr responsive {...id}>
-            <td>{row.id}</td>
-            <td>{row.nome}</td>
-            <td>{row.ano}</td>
-            <td>{row.idade}</td>
+        {posts.map((post) => (
+          <tr key={post.id}>
+            <td>{post.id}</td>
+            <td>{post.nome}</td>
+            <td>{post.ano}</td>
+            <td>{post.idade}</td>
             <td>
               <Button responsive variant="secondary" onClick={() => handUpdate(post)}>Update</Button>{" "}
               </td>
             <td>
-              <Button variant="danger" onClick={()=> deletePost(id) }>Excluir</Button>{" "}
+              <Button variant="danger"
+                  onClick={() => handDelete(post)}>Excluir</Button>{" "}
               </td>
           </tr>
         ))}
